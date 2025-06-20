@@ -410,14 +410,14 @@ const ServiceDesigns = () => {
                 <div
                   key={index}
                   className="bg-white rounded-lg shadow flex flex-col cursor-pointer hover:shadow-lg transition-shadow duration-300"
-                  onClick={() => openModal(`/img_friendiz/${item.image}`, item.title, `Description détaillée de la réalisation ${item.title}.`)}
+                  onClick={() => openModal(`/${item.image}`, item.title, `Description détaillée de la réalisation ${item.title}.`)}
                 >
                   {/* Title */}
                   <h3 className="text-lg font-semibold p-4 text-center">{item.title}</h3>
                   {/* Image */}
                   <div className="aspect-square flex items-center justify-center">
                     <img
-                      src={`/img_friendiz/${item.image}`}
+                      src={`/${item.image}`}
                       alt={`Réalisation ${item.title}`}
                       className="w-full h-full object-cover rounded-b-lg"
                     />

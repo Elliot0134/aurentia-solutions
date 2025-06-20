@@ -218,7 +218,7 @@ const ServiceAutomation = () => {
               {availableTools.map((tool, index) => (
                 <img
                   key={index}
-                  src={`/public/logo_app/${tool.replace(/\s/g, '')}-logo.png`}
+                  src={`/${tool.replace(/\s/g, '')}-logo.png`}
                   alt={`Logo ${tool}`}
                   className="w-full h-auto object-cover rounded-lg scroll-reveal"
                   style={{ transitionDelay: `${index * 0.05}s` }}
@@ -287,7 +287,7 @@ const ServiceAutomation = () => {
                   >
                     {/* Icon */}
                     <img
-                      src={`/public/marketing-icons/${type.title === 'Assistant Virtuel' ? 'agent-chatbot' : type.title === 'Agent Support Automatisé' ? 'agent-support' : type.title === 'Agent Commercial' ? 'agent-crm' : type.title.toLowerCase().replace(/\s/g, '-')}-icon.png`}
+                      src={`/${type.title === 'Assistant Virtuel' ? 'agent-chatbot' : type.title === 'Agent Support Automatisé' ? 'agent-support' : type.title === 'Agent Commercial' ? 'agent-crm' : type.title.toLowerCase().replace(/\s/g, '-')}-icon.png`}
                       alt={`${type.title} Icon`}
                       className="w-12 h-12 mr-6 flex-shrink-0"
                     />
