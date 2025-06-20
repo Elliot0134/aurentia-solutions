@@ -1,0 +1,107 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 38 41% 97%;
+    --foreground: 220 14% 21%;
+
+    --card: 220 14% 21%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 14% 21%;
+
+    --primary: 220 14% 21%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 220 14% 21%;
+
+    --muted: 38 30% 92%;
+    --muted-foreground: 220 14% 40%;
+
+    --accent: 38 41% 90%;
+    --accent-foreground: 220 14% 21%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 14% 85%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 220 14% 21%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-aurentia-background text-aurentia-text antialiased;
+  }
+}
+
+@layer components {
+  .container-section {
+    @apply container mx-auto px-4 py-16 md:py-24;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-semibold mb-6 md:mb-8;
+  }
+  
+  .section-subtitle {
+    @apply text-lg md:text-xl mb-12 max-w-3xl mx-auto;
+  }
+  
+  .hover-card {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  .reveal-on-scroll {
+    @apply opacity-0;
+  }
+  
+  .btn-primary {
+    @apply bg-aurentia-card text-white px-6 py-3 rounded-md font-medium transition-all hover:bg-opacity-90;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-aurentia-card border border-aurentia-card px-6 py-3 rounded-md font-medium transition-all hover:bg-aurentia-background;
+  }
+}
+
+/* Custom Scroll Reveal Animation */
+.scroll-reveal {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle circuit board pattern background */
+.circuit-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232e333d' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(46, 51, 61, 0.1);
+}
