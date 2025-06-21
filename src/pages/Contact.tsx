@@ -96,101 +96,38 @@ const Contact = () => {
               <div className="lg:col-span-2">
                 <div className="scroll-reveal space-y-12">
                   <div>
-                    <h2 className="text-2xl font-semibold mb-6">Informations de contact</h2>
-                    
+                    <h2 className="text-2xl font-semibold mb-6">Discutons de votre projet</h2>
+                    <p className="text-gray-600 mb-6">
+                      N'hésitez pas à nous contacter pour toute question ou pour discuter de votre projet.
+                    </p>
                     <div className="space-y-6">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-2">Email</h3>
-                        <p className="text-gray-600">contact@aurentia-solutions.fr</p>
+                      <div className="flex items-center space-x-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-aurentia-card">
+                          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                          <line x1="12" y1="18" x2="12" y2="18"></line>
+                        </svg>
+                        <a href="tel:+33744440962" className="text-gray-600 hover:underline">07 44 44 09 62</a>
                       </div>
-                      
-                      <div>
-                        <h3 className="text-lg font-semibold mb-2">Réseaux sociaux</h3>
-                        <div className="flex space-x-4">
-                          <a href="#" aria-label="LinkedIn" className="text-aurentia-text hover:text-aurentia-card transition-colors">
-                            <svg 
-                              xmlns="http://www.w3.org/2000/svg" 
-                              width="20" 
-                              height="20" 
-                              viewBox="0 0 24 24" 
-                              fill="none" 
-                              stroke="currentColor" 
-                              strokeWidth="2" 
-                              strokeLinecap="round" 
-                              strokeLinejoin="round"
-                            >
-                              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                              <rect x="2" y="9" width="4" height="12"></rect>
-                              <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                          </a>
-                          <a href="#" aria-label="Twitter" className="text-aurentia-text hover:text-aurentia-card transition-colors">
-                            <svg 
-                              xmlns="http://www.w3.org/2000/svg" 
-                              width="20" 
-                              height="20" 
-                              viewBox="0 0 24 24" 
-                              fill="none" 
-                              stroke="currentColor" 
-                              strokeWidth="2" 
-                              strokeLinecap="round" 
-                              strokeLinejoin="round"
-                            >
-                              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                            </svg>
-                          </a>
-                          <a href="#" aria-label="Instagram" className="text-aurentia-text hover:text-aurentia-card transition-colors">
-                            <svg 
-                              xmlns="http://www.w3.org/2000/svg" 
-                              width="20" 
-                              height="20" 
-                              viewBox="0 0 24 24" 
-                              fill="none" 
-                              stroke="currentColor" 
-                              strokeWidth="2" 
-                              strokeLinecap="round" 
-                              strokeLinejoin="round"
-                            >
-                              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                          </a>
-                        </div>
+                      <div className="flex items-center space-x-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-aurentia-card">
+                          <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                          <path d="m22 7-8.97 5.7a1.93 1.93 0 0 1-2.06 0L2 7"></path>
+                        </svg>
+                        <p className="text-gray-600">contact@aurentia.fr</p>
+                      </div>
+                      <div className="flex items-center">
+                        <a href="https://www.linkedin.com/in/elliot-estrade-8b7754201/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-black group hover:bg-aurentia-card transition-colors">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white group-hover:text-white">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                          </svg>
+                        </a>
                       </div>
                     </div>
                   </div>
                   
-                  <div>
-                    <h2 className="text-2xl font-semibold mb-6">Prenez rendez-vous</h2>
-                    
-                    <div className="space-y-6">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-2">Calendrier</h3>
-                        <p className="text-gray-600 mb-4">
-                          Réservez un créneau dans notre agenda pour discuter de votre projet.
-                        </p>
-                        <div className="h-48 bg-gray-100 rounded-lg flex items-center justify-center">
-                          <p className="text-gray-500">Prochainement: intégration Calendly</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   
-                  <div>
-                    <h2 className="text-2xl font-semibold mb-6">Chat en direct</h2>
-                    
-                    <div className="space-y-6">
-                      <div>
-                        <p className="text-gray-600 mb-4">
-                          Discutez avec nous en temps réel pour obtenir des réponses rapides.
-                        </p>
-                        <div className="h-24 bg-gray-100 rounded-lg flex items-center justify-center">
-                          <p className="text-gray-500">Prochainement: chat en direct</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
               
@@ -290,91 +227,7 @@ const Contact = () => {
         </div>
       </section>
       
-      {/* FAQ Section */}
-      <section className="py-20 bg-aurentia-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="scroll-reveal text-3xl md:text-4xl font-bold mb-16 text-center">
-              Questions fréquentes
-            </h2>
-            
-            <div className="scroll-reveal space-y-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Combien de temps faut-il pour obtenir une réponse ?</h3>
-                <p className="text-gray-600">
-                  Nous nous efforçons de répondre à toutes les demandes dans un délai de 24 à 48 heures ouvrées.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Proposez-vous des devis gratuits ?</h3>
-                <p className="text-gray-600">
-                  Oui, tous nos devis sont gratuits et sans engagement. Nous prenons le temps d'analyser vos besoins pour vous proposer une solution adaptée.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Travaillez-vous avec des clients internationaux ?</h3>
-                <p className="text-gray-600">
-                  Oui, nous travaillons avec des clients du monde entier. Nos solutions sont adaptables à tous les marchés et toutes les cultures.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Quels sont vos délais de réalisation ?</h3>
-                <p className="text-gray-600">
-                  Nos délais varient en fonction de la complexité du projet. Nous établissons toujours un calendrier précis au début de chaque collaboration.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       
-      {/* Legal Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="scroll-reveal text-3xl md:text-4xl font-bold mb-16 text-center">
-              Informations légales
-            </h2>
-            
-            <div className="scroll-reveal grid grid-cols-1 md:grid-cols-2 gap-10">
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Mentions légales</h3>
-                <p className="text-gray-600 mb-4">
-                  Aurentia Solutions est une entreprise française soumise au droit français.
-                </p>
-                <Button 
-                  variant="outline"
-                  className="border-aurentia-card text-aurentia-card hover:bg-aurentia-background"
-                  asChild
-                >
-                  <Link to="/mentions-legales">
-                    Consulter les mentions légales
-                  </Link>
-                </Button>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Politique de confidentialité</h3>
-                <p className="text-gray-600 mb-4">
-                  Nous accordons une importance capitale à la protection de vos données personnelles.
-                </p>
-                <Button 
-                  variant="outline"
-                  className="border-aurentia-card text-aurentia-card hover:bg-aurentia-background"
-                  asChild
-                >
-                  <Link to="/confidentialite">
-                    Consulter notre politique
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       
       {/* CTA Section */}
       <section className="py-20 bg-aurentia-card text-white">

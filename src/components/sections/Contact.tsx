@@ -85,33 +85,37 @@ const Contact = () => {
             <div className="md:col-span-2">
               <div className="scroll-reveal space-y-8">
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Email</h3>
-                  <p className="text-gray-600">contact@aurentia-solutions.fr</p>
-                </div>
-                
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Calendrier</h3>
-                  <p className="text-gray-600 mb-2">
-                    Planifiez un rendez-vous avec nous.
+                  <h2 className="text-2xl font-semibold mb-6">Discutons de votre projet</h2>
+                  <p className="text-gray-600 mb-6">
+                    N'hésitez pas à nous contacter pour toute question ou pour discuter de votre projet.
                   </p>
-                  <div className="h-32 bg-gray-100 rounded-md flex items-center justify-center">
-                    <p className="text-sm text-gray-500">
-                      Prochainement: intégration Calendly
-                    </p>
+                  <div className="space-y-6">
+                    <div className="flex items-center space-x-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-aurentia-card">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12" y2="18"></line>
+                      </svg>
+                      <a href="tel:+33744440962" className="text-gray-600 hover:underline">07 44 44 09 62</a>
+                    </div>
+                    <div className="flex items-center space-x-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-aurentia-card">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.93 1.93 0 0 1-2.06 0L2 7"></path>
+                      </svg>
+                      <p className="text-gray-600">contact@aurentia.fr</p>
+                    </div>
+                    <div className="flex items-center">
+                      <a href="https://www.linkedin.com/in/elliot-estrade-8b7754201/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-black group hover:bg-aurentia-card transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white group-hover:text-white">
+                          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                          <rect x="2" y="9" width="4" height="12"></rect>
+                          <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
                 
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Chat</h3>
-                  <p className="text-gray-600 mb-2">
-                    Discutez avec nous en direct.
-                  </p>
-                  <div className="h-16 bg-gray-100 rounded-md flex items-center justify-center">
-                    <p className="text-sm text-gray-500">
-                      Prochainement: chat en direct
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
             

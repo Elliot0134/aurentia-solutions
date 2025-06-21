@@ -1,10 +1,44 @@
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Badge from "@/components/ui/Badge";
+import { Card } from "@/components/ui/card";
+
+interface TimelineButton {
+  text: string;
+  link: string;
+}
+
+interface TimelineItem {
+  images: string[];
+  title: string;
+  subtitle: string;
+  text: string;
+  button?: TimelineButton;
+}
+
+interface TimelineData {
+  [key: string]: TimelineItem;
+}
 
 const About = () => {
+  const [activeYear, setActiveYear] = useState<keyof TimelineData>('2022');
+  const [enlargedImage, setEnlargedImage] = useState<string | null>(null);
+
+  const formatTextWithLineBreaks = (text: string) => {
+    return text.split('\n\n').map((paragraph, pIdx) => (
+      <p key={pIdx} className={pIdx > 0 ? "mt-4" : ""}>
+        {paragraph.split('\n').map((line, lIdx) => (
+          <span key={lIdx}>
+            {line}
+            {lIdx < paragraph.split('\n').length - 1 && <br />}
+          </span>
+        ))}
+      </p>
+    ));
+  };
+
   useEffect(() => {
     // Scroll to top on page load
     window.scrollTo(0, 0);
@@ -33,38 +67,30 @@ const About = () => {
     };
   }, []);
 
-  const timeline = [
-    {
-      year: "2018",
-      title: "Lancement de la marque CBD pour animaux",
-      description: "Création et développement d'une marque de produits CBD pour animaux de compagnie, de l'idée initiale à la commercialisation."
+  const timelineData: TimelineData = {
+    '2022': {
+      images: ["/xfive-1-elliot-page.png", "/xfive-2-elliot-page.png", "/xfive-3-elliot-page.png"],
+      title: "XFIVE Records",
+      subtitle: "Studio d'enregistrement et production musicale",
+      text: "En 2022, j'ai co-fondé XFIVE Records avec un ami d'enfance, un projet né de notre passion commune pour la musique que nous partagions depuis des années. Cette aventure entrepreneuriale était l'aboutissement naturel de notre collaboration musicale et de notre envie de créer quelque chose ensemble.\n\nJ'ai pris en charge la conception et la construction physique du studio d'enregistrement, en gérant le projet de A à Z. Mon rôle s'étendait également au développement de la stratégie marketing, à l'accompagnement personnalisé des clients et à la gestion de notre portefeuille d'artistes.\n\nCette expérience m'a permis de développer des compétences techniques pointues tout en apprenant à transformer une passion partagée en véritable entreprise. XFIVE Records a été une aventure formidable qui a posé les bases de ma vision entrepreneuriale centrée sur l'accompagnement et la création de valeur."
     },
-    {
-      year: "2020",
-      title: "Expansion de la marque",
-      description: "Développement de la présence en ligne et expansion vers de nouveaux marchés européens."
+    '2023-24': {
+      images: ["/friendiz-1-elliot-page.png", "/friendiz-2-elliot-page.png", "/friendiz-3-elliot-page.png"],
+      title: "Frend'iz",
+      subtitle: "Marque de CBD thérapeutique pour animaux de compagnie",
+      text: "Entre 2023 et 2024, j'ai lancé Frend'iz, une marque spécialisée dans les produits CBD destinés au bien-être des animaux de compagnie. Cette aventure m'a amené à explorer le secteur du bien-être animal, en développant une gamme de produits naturels pour améliorer la qualité de vie des chiens et chats. \n\nJ'ai géré tous les aspects de cette entreprise, de la conception des produits à la stratégie marketing, en passant par la conformité réglementaire, développement commercial etc. \n\nFrend'iz m'a appris l'importance de la recherche de marché, la rigueur et l'organisation qu'il faut avoir pour lancer un grand projet, et de la création d'une marque authentique dans un secteur de niche.",
+      button: {
+        text: "Visiter le site Frend'iz",
+        link: "https://www.friendiz.fr/"
+      }
     },
-    {
-      year: "2021",
-      title: "Mise en place d'automatisations",
-      description: "Implémentation de workflows automatisés pour optimiser les opérations et améliorer l'efficacité de l'entreprise."
-    },
-    {
-      year: "2022",
-      title: "Sortie réussie",
-      description: "Vente de l'entreprise et préparation du projet Aurentia Solutions pour aider d'autres entrepreneurs."
-    },
-    {
-      year: "2023",
-      title: "Gagnant du Hackaton IA",
-      description: "Reconnaissance pour l'innovation en matière d'intelligence artificielle appliquée au business."
-    },
-    {
-      year: "2024",
-      title: "Lancement d'Aurentia Solutions",
-      description: "Création d'un écosystème de solutions intégrées pour les entrepreneurs et les entreprises en croissance."
+    '2025': {
+      images: ["/aurentia-1-elliot-page.png", "/aurentia-2-elliot-page.png", "/aurentia-3-elliot-page.png", "/aurentia-4-elliot-page.png"],
+      title: "Aurentia Solutions",
+      subtitle: "Écosystème de services numériques pour entrepreneurs",
+      text: "En 2025, je lance Aurentia Solutions, un écosystème complet de services numériques conçu pour accompagner les entrepreneurs dans leur transformation digitale. \n\nCette plateforme regroupe plusieurs services complémentaires : des solutions de design et d'automatisation, Aurentia Resource qui propose des templates optimisés pour Notion, Airtable etc. , et Aurentia Business AI, un logiciel intelligent d'aide à la création d'entreprise. \n\nCette initiative représente la synthèse de toutes mes expériences précédentes, combinant créativité, technologie et accompagnement entrepreneurial pour offrir une solution globale aux besoins des entreprises modernes."
     }
-  ];
+  };
 
   const values = [
     {
@@ -104,36 +130,19 @@ const About = () => {
       
       {/* Bio Section */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container md:w-4/5 mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             {/* Image */}
             <div className="scroll-reveal">
               <div className="relative">
-                <div className="aspect-square bg-gray-200 rounded-lg overflow-hidden relative shadow-lg">
-                  {/* Placeholder for profile image */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-aurentia-card bg-opacity-10">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="64"
-                      height="64"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-aurentia-card opacity-40"
-                    >
-                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                  </div>
+                <div className="aspect-square bg-gray-200 rounded-lg overflow-hidden relative shadow-lg max-w-sm mx-auto">
+                  <img 
+                    src="/photo-elliot.png" 
+                    alt="Elliot" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 
-                {/* Badge */}
-                <div className="absolute -bottom-4 -right-4">
-                  <Badge>Gagnant du Hackaton IA</Badge>
-                </div>
               </div>
             </div>
 
@@ -173,60 +182,126 @@ const About = () => {
               Parcours entrepreneurial
             </h2>
             
-            <div className="relative border-l-2 border-aurentia-card pl-10 ml-6 md:ml-0">
-              {timeline.map((item, index) => (
-                <div 
-                  key={item.year} 
-                  className="scroll-reveal mb-12 relative"
-                  style={{ transitionDelay: `${index * 0.1}s` }}
-                >
-                  <div className="absolute -left-[3.25rem] w-10 h-10 bg-aurentia-card rounded-full flex items-center justify-center text-white font-semibold">
-                    {item.year.substring(2)}
+            <div className="flex justify-center space-x-4 mb-8">
+              <Button 
+                variant={activeYear === '2022' ? 'default' : 'outline'} 
+                onClick={() => setActiveYear('2022')}
+              >
+                2022
+              </Button>
+              <Button 
+                variant={activeYear === '2023-24' ? 'default' : 'outline'} 
+                onClick={() => setActiveYear('2023-24')}
+              >
+                2023-24
+              </Button>
+              <Button 
+                variant={activeYear === '2025' ? 'default' : 'outline'} 
+                onClick={() => setActiveYear('2025')}
+              >
+                2025
+              </Button>
+            </div>
+
+            <div className="scroll-reveal mb-12">
+              <div className="flex justify-start gap-2 mb-4">
+                {timelineData[activeYear as keyof typeof timelineData].images.map((imgSrc, idx) => (
+                  <div 
+                    key={idx} 
+                    className="aspect-square bg-gray-200 rounded-lg overflow-hidden relative shadow-lg w-1/3 max-w-[150px] cursor-pointer"
+                    onClick={() => setEnlargedImage(imgSrc)}
+                  >
+                    <img 
+                      src={imgSrc} 
+                      alt={`Image ${idx + 1}`} 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <div className="absolute -left-16 top-2 text-sm font-semibold">{item.year}</div>
-                  <div className="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              <div className="text-center md:text-left">
+                <h3 className="text-3xl font-bold mb-2">{timelineData[activeYear as keyof typeof timelineData].title}</h3>
+                <h4 className="text-lg font-medium text-gray-700 mb-2">{timelineData[activeYear as keyof typeof timelineData].subtitle}</h4>
+                <hr className="my-4 border-gray-300" />
+                <p className="text-gray-600">{formatTextWithLineBreaks(timelineData[activeYear as keyof typeof timelineData].text)}</p>
+                {timelineData[activeYear as keyof typeof timelineData].button && (
+                  <Button asChild className="mt-4">
+                    <a href={timelineData[activeYear as keyof typeof timelineData].button?.link} target="_blank" rel="noopener noreferrer">
+                      {timelineData[activeYear as keyof typeof timelineData].button?.text}
+                    </a>
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {enlargedImage && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 transition-opacity duration-300"
+          onClick={() => setEnlargedImage(null)}
+          style={{ opacity: enlargedImage ? 1 : 0 }}
+        >
+          <div 
+            className="relative max-w-3xl max-h-full overflow-auto transition-transform duration-300" 
+            onClick={(e) => e.stopPropagation()}
+            style={{ transform: enlargedImage ? 'scale(1)' : 'scale(0.95)' }}
+          >
+            <img src={enlargedImage} alt="Enlarged" className="w-full h-auto object-contain" />
+            <button 
+              className="absolute top-2 right-2 text-white text-3xl font-bold bg-gray-800 rounded-full w-10 h-10 flex items-center justify-center"
+              onClick={() => setEnlargedImage(null)}
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
       
-      {/* Hackaton Section */}
+      {/* Hackaton IA Section */}
       <section className="py-20 bg-aurentia-card text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="scroll-reveal text-3xl md:text-4xl font-bold mb-6">
-              Gagnant du Hackaton IA
+              Hackathon IA
             </h2>
             
             <div className="scroll-reveal mb-10">
-              <Badge className="bg-white text-aurentia-card mx-auto">Distinction</Badge>
+              <Badge className="bg-white text-aurentia-card mx-auto">Projet</Badge>
             </div>
             
             <p className="scroll-reveal text-xl mb-10">
-              En 2023, Elliot a remporté le Hackaton IA pour son innovation dans l'application de l'intelligence artificielle 
-              aux défis entrepreneuriaux, posant ainsi les bases de ce qui deviendrait Aurentia Business Idea.
+              Découvrez notre projet primé lors du Hackathon IA, une solution innovante pour le réemploi des matériaux de construction.
             </p>
             
-            <div className="scroll-reveal grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white bg-opacity-10 p-8 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Le défi</h3>
-                <p>
-                  Créer une solution utilisant l'intelligence artificielle pour aider les entrepreneurs à transformer 
-                  leurs idées en plans d'action concrets en un temps record.
-                </p>
+            <div className="scroll-reveal grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              {/* Left Column: Challenge and Solution */}
+              <div className="flex flex-col gap-8">
+                <div className="bg-white bg-opacity-10 p-8 rounded-lg">
+                  <h3 className="text-xl font-semibold mb-4">Le défi</h3>
+                  <p>
+                    Le client a une entreprise de réemploi des matériaux lors de la destruction de bâtiments. Il a besoin de générer des rapports d'analyses des bâtiments et cela prend aux collaborateurs de 3 à 5 jours.
+                  </p>
+                </div>
+                
+                <div className="flex justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-10 h-10 text-white">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+                  </svg>
+                </div>
+
+                <div className="bg-white bg-opacity-10 p-8 rounded-lg">
+                  <h3 className="text-xl font-semibold mb-4">La solution</h3>
+                  <p>
+                    Une app tout en 1 permettant de générer des rapports d'analyses en quelques minutes, avec possibilité de chatter avec les rapports, projets, etc. + créer des posts et articles de blog selon le projet choisi.
+                  </p>
+                </div>
               </div>
-              
-              <div className="bg-white bg-opacity-10 p-8 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">La solution</h3>
-                <p>
-                  Un système intelligent capable d'analyser une idée business et de générer un plan d'affaires complet 
-                  en posant seulement quatre questions stratégiques.
-                </p>
+
+              {/* Right Column: LinkedIn Post */}
+              <div className="flex justify-center">
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7331637013185466368?collapsed=1" height="543" width="504" frameBorder="0" allowFullScreen={true} title="Post intégré"></iframe>
               </div>
             </div>
           </div>
@@ -238,19 +313,20 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="scroll-reveal text-3xl md:text-4xl font-bold mb-16 text-center">
-              Nos valeurs
+              Mes valeurs
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               {values.map((value, index) => (
-                <div 
+                <Card 
                   key={value.title} 
-                  className="scroll-reveal"
+                  className="scroll-reveal bg-[#f5f5f4] p-6 rounded-lg shadow-sm border-none"
                   style={{ transitionDelay: `${index * 0.1}s` }}
                 >
-                  <h3 className="text-2xl font-semibold mb-4">{value.title}</h3>
-                  <p className="text-gray-600">{value.description}</p>
-                </div>
+                  <h3 className="text-2xl font-extrabold mb-4 text-[#2E333D]">{value.title}</h3>
+                  <hr className="my-2 border-gray-300" />
+                  <p className="text-gray-600 mt-4">{value.description}</p>
+                </Card>
               ))}
             </div>
           </div>
@@ -262,16 +338,16 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="scroll-reveal text-3xl md:text-4xl font-bold mb-6">
-              Notre vision
+              Ma vision
             </h2>
             
             <p className="scroll-reveal text-xl mb-10">
-              Nous croyons que chaque entrepreneur mérite des outils et des solutions de qualité pour concrétiser sa vision.
+              Je crois que chaque entrepreneur mérite des outils et des solutions de qualité pour concrétiser sa vision.
             </p>
             
             <div className="scroll-reveal bg-white p-8 rounded-lg shadow-sm">
               <p className="text-xl italic text-aurentia-card">
-                "Notre mission est de démocratiser l'accès à des solutions premium en design, automatisation et stratégie business, 
+                "La mission d'aurentia est de démocratiser l'accès à des solutions premium en design, automatisation et stratégie business, 
                 permettant à chaque entrepreneur de se concentrer sur ce qui compte vraiment : faire grandir son entreprise."
               </p>
             </div>
@@ -288,22 +364,12 @@ const About = () => {
             </h2>
             
             <p className="scroll-reveal text-xl mb-10">
-              Découvrez comment nos solutions peuvent transformer votre entreprise.
+              Découvrez comment Aurentia transformer votre entreprise.
             </p>
             
             <div className="scroll-reveal flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
-                className="bg-white text-aurentia-card hover:bg-opacity-90"
-                asChild
-              >
-                <Link to="/contact">
-                  Nous contacter
-                </Link>
-              </Button>
-              
-              <Button 
-                variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="bg-white text-aurentia-card hover:bg-[#2E333D] hover:text-white hover:border-white"
                 asChild
               >
                 <Link to="/">

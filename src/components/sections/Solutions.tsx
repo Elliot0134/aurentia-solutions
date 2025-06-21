@@ -32,31 +32,31 @@ const Ecosystem = () => { // Renamed component to Ecosystem
     {
       title: "Aurentia Designs",
       description: "Une esthétique premium pour une marque mémorable. De l'audit de marque aux logos, chartes graphiques, kits sociaux et supports marketing, nos designers créent des éléments visuels distinctifs qui renforcent votre positionnement et amplifient votre présence sur tous les canaux.",
-      imageUrl: "/placeholder.svg", // Changed to imageUrl
+      imageUrl: "/aurentia-design-img.png", // Changed to imageUrl
       to: "/services/designs"
-    },
-    {
-      title: "Aurentia Ressources",
-      description: "Templates Notion, prompts IA et workflows N8N soigneusement conçus pour transformer votre productivité. Nos outils allient design élégant et fonctionnalités puissantes, sans compétences techniques requises.",
-      imageUrl: "/placeholder.svg", // Changed to imageUrl
-      to: "/ressources"
     },
     {
       title: "Aurentia Automation",
       description: "Transformez vos processus manuels en systèmes automatisés sur mesure. Nos solutions N8N personnalisées connectent vos outils existants pour vous permettre de vous concentrer sur ce qui fait grandir votre entreprise.",
-      imageUrl: "/placeholder.svg", // Changed to imageUrl
+      imageUrl: "/aurentia-auto-main-img.png", // Changed to imageUrl
       to: "/services/automation"
     },
     {
-      title: "Aurentia Business Idea",
+      title: "Aurentia Ressources",
+      description: "Templates Notion, prompts IA et workflows N8N soigneusement conçus pour transformer votre productivité. Nos outils allient design élégant et fonctionnalités puissantes, sans compétences techniques requises.",
+      imageUrl: "/aurentia-ressources.png", // Changed to imageUrl
+      to: "/ressources"
+    },
+    {
+      title: "Aurentia App",
       description: "Une idée business, 4 questions, 1 plan d'action complet. Obtenez instantanément votre étude de marché, analyse concurrentielle, définition de cible, business plan etc. pour concrétiser votre vision avec clarté et confiance.",
-      imageUrl: "/placeholder.svg", // Changed to imageUrl
-      to: "/saas/business-idea"
+      imageUrl: "/aurentia-business-idea.png", // Changed to imageUrl
+      to: "https://landing.aurentia.fr/"
     }
   ];
 
   return (
-    <section id="ecosystem" className="py-24 bg-aurentia-background"> {/* Changed id */}
+    <section id="ecosystem" className="py-24 bg-white"> {/* Changed id */}
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="scroll-reveal text-3xl md:text-4xl font-bold mb-4">
@@ -67,7 +67,7 @@ const Ecosystem = () => { // Renamed component to Ecosystem
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 max-w-[80%] mx-auto"> {/* Changed grid columns for desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[80%] mx-auto items-start"> {/* Changed grid columns for desktop */}
           {solutions.map((solution, index) => (
             <div key={solution.title} className="scroll-reveal" style={{ transitionDelay: `${index * 0.1}s` }}>
               <SolutionCard

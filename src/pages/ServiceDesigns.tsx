@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, X } from "lucide-react"; // Import icons
+import { CheckCircle2, X, ArrowRight } from "lucide-react"; // Import icons
 
 const ServiceDesigns = () => {
   const pricingSectionRef = useRef<HTMLDivElement>(null);
@@ -396,6 +396,18 @@ const ServiceDesigns = () => {
               Retrouvez la plus belle création chez Aurentia Design : l'identité globale de Friend'iz
             </p>
 
+            <div className="my-12 text-center">
+              <Button
+                variant="design"
+                asChild
+                className="text-lg px-8 py-3"
+              >
+                <Link to="https://www.friendiz.fr/" className="flex items-center justify-center">
+                  www.friendiz.fr <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
+
             <div className="scroll-reveal grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { title: "Site web", image: "Site-temoignage-friendiz.png" },
@@ -439,7 +451,7 @@ const ServiceDesigns = () => {
           style={{pointerEvents: isModalVisible ? 'auto' : 'none'}}
         >
           <div
-            className={`bg-white rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative transition-all duration-500 ease-in-out ${
+            className={`bg-white rounded-lg shadow-xl max-w-xl max-h-[90vh] overflow-y-auto relative transition-all duration-500 ease-in-out ${
               isModalVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-8'
             }`}
             onClick={(e) => e.stopPropagation()}
@@ -447,17 +459,14 @@ const ServiceDesigns = () => {
             <button className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 z-10" onClick={closeModal}>
               <X size={24} />
             </button>
-            <div className="flex flex-col md:flex-row">
-              <div className="md:w-1/2 p-4">
+            <div className="flex flex-col items-center">
+              <div className="p-4">
                 <img
                   src={modalContent.image}
                   alt={modalContent.title}
                   className="w-full h-auto rounded-lg object-cover"
                 />
-              </div>
-              <div className="md:w-1/2 p-6 md:p-4 flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">{modalContent.title}</h3>
-                <p className="text-gray-700 text-base">{modalContent.description}</p>
+                <h3 className="text-2xl md:text-3xl font-bold mt-4 text-center">{modalContent.title}</h3>
               </div>
             </div>
           </div>

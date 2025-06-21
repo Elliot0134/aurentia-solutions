@@ -63,14 +63,15 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Contenu textuel (gauche sur desktop, bas sur mobile) */}
           <div className="w-full md:w-1/2 text-center md:text-left">
-            <h1 className="scroll-reveal text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="scroll-reveal text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
               Aurentia Solutions
-              <span className="block text-2xl md:text-3xl font-medium mt-2">
+              <div className="border-b border-gray-300 pb-4 mb-6"></div>
+              <span className="block text-xl md:text-2xl font-medium mt-2">
                 Excellence en Design, Automation et Stratégie Business
               </span>
             </h1>
 
-            <p className="scroll-reveal text-lg md:text-xl max-w-3xl md:max-w-none mx-auto md:mx-0 mb-12">
+            <p className="scroll-reveal text-base md:text-lg max-w-3xl md:max-w-none mx-auto md:mx-0 mb-12">
               Des solutions intégrées pour transformer votre vision en réussite entrepreneuriale
             </p>
 
@@ -80,28 +81,18 @@ const Hero = () => {
                 asChild
               >
                 <Link to="/saas/business-idea">
-                  Découvrir Aurentia Business Idea
+                  Découvrir
                 </Link>
               </Button>
-
-              <Button
-                variant="outline"
-                className="border-aurentia-card text-aurentia-card hover:bg-aurentia-background px-8 py-6 text-base"
-                asChild
-              >
-                <Link to="/contact">
-                  Me contacter
-                </Link>
-            </Button>
           </div>
           </div>
 
           {/* Placeholder image (droite sur desktop, haut sur mobile) */}
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end order-first md:order-last">
+          <div className="w-2/3 mx-auto md:w-1/3 flex justify-center md:justify-end order-first md:order-last">
             <div className="scroll-reveal w-full max-w-sm md:max-w-md lg:max-w-lg aspect-square bg-gray-300 flex items-center justify-center rounded-lg overflow-hidden">
               {/* Utilisation d'un placeholder SVG ou d'une image temporaire */}
               <img
-                src="/placeholder.svg" // Assurez-vous que ce fichier existe dans le dossier public
+                src="/photo-elliot.png" // Assurez-vous que ce fichier existe dans le dossier public
                 alt="Placeholder Image"
                 className="w-full h-full object-cover"
               />

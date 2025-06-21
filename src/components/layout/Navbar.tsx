@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Menu, ChevronRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,9 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSolutionsMenuOpen, setIsSolutionsMenuOpen] = useState(false);
+
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   // Change navbar style on scroll
   useEffect(() => {
@@ -29,6 +32,25 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenuOpen]); // Re-run effect if menu state changes
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -66,7 +88,7 @@ const Navbar = () => {
                   <Link to="/services/automation">Aurentia <span className="font-bold" style={{ color: '#5942ac' }}>Automation</span></Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link to="/saas/business-idea">Aurentia <span className="font-bold" style={{ color: '#2e333d' }}>Business Idea</span></Link>
+                  <Link to="https://landing.aurentia.fr/">Aurentia <span className="font-bold" style={{ color: '#2e333d' }}>Business IA</span></Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -89,6 +111,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
+              ref={buttonRef}
               className="text-aurentia-text"
               onClick={toggleMobileMenu}
               aria-label="Menu"
@@ -101,8 +124,9 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-[calc(4rem+20px)] left-1/2 transform -translate-x-1/2 w-[96%] max-w-[80%] rounded-b-xl shadow-lg bg-white/80 backdrop-filter backdrop-blur-xl transition-transform duration-300 md:hidden z-[60] ${
-          isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
+        ref={menuRef}
+        className={`fixed top-[calc(4rem+20px)] left-1/2 transform -translate-x-1/2 w-[96%] max-w-[80%] rounded-xl shadow-lg bg-white/80 transition-all duration-300 md:hidden z-[60] ${
+          isMobileMenuOpen ? "translate-y-0 opacity-100 backdrop-blur-xl" : "-translate-y-full opacity-0 backdrop-blur-none pointer-events-none"
         }`}
       >
         <div className="container mx-auto px-4 py-8 flex flex-col">
@@ -112,22 +136,22 @@ const Navbar = () => {
           <nav className="flex flex-col space-y-4">
             <div className="bg-gray-100 p-4 rounded-md text-center">
               <Link to="/services/designs" className="font-codepro text-xl text-aurentia-text hover:opacity-70 transition-opacity" onClick={() => setIsMobileMenuOpen(false)}>
-                Aurentia Designs
+                Aurentia <span className="font-bold" style={{ color: '#ff5757' }}>Designs</span>
               </Link>
             </div>
             <div className="bg-gray-100 p-4 rounded-md text-center">
               <Link to="/ressources" className="font-codepro text-xl text-aurentia-text hover:opacity-70 transition-opacity" onClick={() => setIsMobileMenuOpen(false)}>
-                Aurentia Ressources
+                Aurentia <span className="font-bold" style={{ color: '#1C4332' }}>Ressources</span>
               </Link>
             </div>
             <div className="bg-gray-100 p-4 rounded-md text-center">
               <Link to="/services/automation" className="font-codepro text-xl text-aurentia-text hover:opacity-70 transition-opacity" onClick={() => setIsMobileMenuOpen(false)}>
-                Aurentia Automation
+                Aurentia <span className="font-bold" style={{ color: '#5942ac' }}>Automation</span>
               </Link>
             </div>
             <div className="bg-gray-100 p-4 rounded-md text-center">
-              <Link to="/saas/business-idea" className="font-codepro text-xl text-aurentia-text hover:opacity-70 transition-opacity" onClick={() => setIsMobileMenuOpen(false)}>
-                Aurentia Business Idea
+              <Link to="https://landing.aurentia.fr/" className="font-codepro text-xl text-aurentia-text hover:opacity-70 transition-opacity" onClick={() => setIsMobileMenuOpen(false)}>
+                Aurentia <span className="font-bold" style={{ color: '#2e333d' }}>Business IA</span>
               </Link>
             </div>
             <Link
@@ -137,18 +161,11 @@ const Navbar = () => {
             >
               À propos
             </Link>
-             <Link
-              to="/contact"
-              className="font-codepro text-xl text-aurentia-text hover:opacity-70 transition-opacity text-center"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Contact
-            </Link>
           </nav>
           <div className="mt-auto pt-8">
             <Button className="w-full bg-aurentia-card text-white hover:bg-opacity-90">
-              <Link to="/saas/business-idea" onClick={() => setIsMobileMenuOpen(false)}>
-                Découvrir Aurentia Business Idea
+              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                Me contacter
               </Link>
             </Button>
           </div>

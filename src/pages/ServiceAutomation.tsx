@@ -174,17 +174,8 @@ const ServiceAutomation = () => {
                     asChild
                     className="text-base text-white bg-[#5942ac] hover:bg-[#5942ac]/90"
                   >
-                    <Link to="/contact">
+                    <Link to="https://tally.so/r/wvb9L0">
                       Discuter de mon projet
-                    </Link>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    asChild
-                    className="text-base text-[#5942ac] hover:bg-[#5942ac]/10 border-[#5942ac]"
-                  >
-                    <Link to="/resources">
-                      Découvrir nos ressources
                     </Link>
                   </Button>
                 </div>
@@ -273,7 +264,7 @@ const ServiceAutomation = () => {
         <div className="container mx-auto px-4">
           <div className="mx-auto w-full md:max-w-[80%]"> {/* Added wrapper */}
             <h2 className="scroll-reveal text-3xl md:text-4xl font-bold mb-16 text-center">
-              Nos solutions d'automatisation
+              Exemples concrets d'automatisations
             </h2>
             
             {/* Large Container for Cards */}
@@ -352,9 +343,11 @@ const ServiceAutomation = () => {
               </p>
               
               <div className="scroll-reveal mb-12">
-                <div className="aspect-video bg-white rounded-lg shadow-md p-6 flex items-center justify-center">
-                  <p className="text-gray-400">Aperçu de l'interface N8N (à venir)</p>
-                </div>
+                <img
+                  src="/n8n-technology.png"
+                  alt="Aperçu de l'interface N8N"
+                  className="w-full h-auto rounded-lg shadow-md"
+                />
               </div>
               
               <div className="scroll-reveal text-left">
@@ -434,20 +427,11 @@ const ServiceAutomation = () => {
                   className="bg-white text-[#5942ac] hover:bg-opacity-90"
                   asChild
                 >
-                  <Link to="/contact">
-                    Demander un devis
+                  <Link to="https://tally.so/r/wvb9L0">
+                    Demander mon agent IA
                   </Link>
                 </Button>
                 
-                <Button 
-                  variant="outline"
-                  className="border-white text-white hover:bg-white/10"
-                  asChild
-                >
-                  <Link to="/">
-                    Explorer d'autres solutions
-                  </Link>
-                </Button>
               </div>
             </div>
           </div> {/* Closed wrapper */}
